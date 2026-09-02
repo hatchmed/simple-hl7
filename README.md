@@ -8,7 +8,11 @@ A simple library for creating HL7 middleware, based on connect & express.
 var hl7 = require('simple-hl7');
 
 ///////////////////SERVER/////////////////////
+// Connections close after each ACK by default.
 var app = hl7.tcp();
+
+// To preserve a persistent connection, use:
+// var app = hl7.tcp({ closeSocketAfterRespone: false });
 
 app.use(function(req, res, next) {
   //req.msg is the HL7 message
