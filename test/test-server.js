@@ -80,7 +80,7 @@ describe('TcpServer', function() {
       var parser = new hl7.Parser();
       var adt = parser.parse(fs.readFileSync('test/samples/adt.hl7').toString());
 
-      tcpServer = server.createTcpServer(function(err, req, res) {
+      tcpServer = server.createTcpServer({ closeSocketAfterRespone: false }, function(err, req, res) {
         res.end();
       });
 
